@@ -2,6 +2,7 @@ import React from "react";
 import "./style/main.scss";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
 import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
+import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 const Main = () => {
   const filterElement = [
     {
@@ -51,12 +52,46 @@ const Main = () => {
               <div className="rotate">
                 <label htmlFor="">Rotate & Flip</label>
                 <div className="icon">
-                  <div> <GrRotateLeft /> </div>
-                  <div> <GrRotateRight /> </div>
-                  <div> <CgMergeVertical /> </div>
-                  <div> <CgMergeHorizontal /> </div>
+                  <div>
+                    {" "}
+                    <GrRotateLeft />{" "}
+                  </div>
+                  <div>
+                    {" "}
+                    <GrRotateRight />{" "}
+                  </div>
+                  <div>
+                    {" "}
+                    <CgMergeVertical />{" "}
+                  </div>
+                  <div>
+                    {" "}
+                    <CgMergeHorizontal />{" "}
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="image__section">
+            <div className="image">
+              <label htmlFor="choose">
+                <IoIosImage />
+                <span>Choose Image </span>
+              </label>
+            </div>
+            <div className="image_select">
+              <button>
+                <IoMdUndo />
+              </button>
+              <button>
+                <IoMdRedo />
+              </button>
+              <button>
+                <IoMdRedo />
+              </button>
+              <button>Crop Image</button>
+              <label htmlFor="choose">Choose Image </label>
+              <input type="file" />
             </div>
           </div>
         </div>
