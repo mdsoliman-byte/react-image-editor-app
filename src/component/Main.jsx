@@ -71,6 +71,10 @@ const Main = () => {
                 </div>
               </div>
             </div>
+            <div className="reset">
+              <button>Reset</button>
+              <button>Save Image </button>
+            </div>
           </div>
           <div className="image__section">
             <div className="image">
@@ -80,18 +84,16 @@ const Main = () => {
               </label>
             </div>
             <div className="image_select">
-              <button>
+              <button className="unDoButton">
                 <IoMdUndo />
               </button>
-              <button>
+              <button className="reDeButton">
                 <IoMdRedo />
               </button>
-              <button>
-                <IoMdRedo />
-              </button>
-              <button>Crop Image</button>
+
+              <button className="cropButton">Crop Image</button>
               <label htmlFor="choose">Choose Image </label>
-              <input type="file" />
+              <input type="file" id="choose" />
             </div>
           </div>
         </div>
