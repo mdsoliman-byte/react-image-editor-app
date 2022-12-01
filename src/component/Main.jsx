@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style/main.scss";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
 import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
@@ -24,7 +24,22 @@ const Main = () => {
       name: "HueRotate",
     },
   ];
-
+  const [state, setState] = useState({
+    image: "",
+  });
+  const imagehandel = (e) => {
+    if (e.target.files.length !== 0) {
+      const fileReder = new FileReader();
+      fileReder.onload = () => {
+        setState({
+          ...state,
+          image: fileReder.result,
+        });
+      };
+      fileReder.readAsDataURL(e.target.files[0]);
+    }
+  };
+  console.log(state);
   return (
     <div className="image__editor">
       <div className="card">
@@ -78,10 +93,14 @@ const Main = () => {
           </div>
           <div className="image__section">
             <div className="image">
-              <label htmlFor="choose">
-                <IoIosImage />
-                <span>Choose Image </span>
-              </label>
+              {state.image ? (
+                <img src={state.image} alt="" />
+              ) : (
+                <label htmlFor="choose">
+                  <IoIosImage />
+                  <span>Choose Image </span>
+                </label>
+              )}
             </div>
             <div className="image_select">
               <button className="unDoButton">
@@ -93,7 +112,7 @@ const Main = () => {
 
               <button className="cropButton">Crop Image</button>
               <label htmlFor="choose">Choose Image </label>
-              <input type="file" id="choose" />
+              <input type="file" onChange={imagehandel} id="choose" />
             </div>
           </div>
         </div>
