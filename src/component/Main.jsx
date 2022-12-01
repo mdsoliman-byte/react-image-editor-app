@@ -1,5 +1,7 @@
 import React from "react";
 import "./style/main.scss";
+import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
+import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 const Main = () => {
   const filterElement = [
     {
@@ -37,6 +39,22 @@ const Main = () => {
                   {filterElement.map((element, index) => (
                     <button key={index}>{element.name}</button>
                   ))}
+                </div>
+              </div>
+              <div className="filter__slider">
+                <div className="label__bar">
+                  <label htmlFor="range">Rotate</label>
+                  <span>100%</span>
+                </div>
+                <input type="range" name="" id="" />
+              </div>
+              <div className="rotate">
+                <label htmlFor="">Rotate & Flip</label>
+                <div className="icon">
+                  <div> <GrRotateLeft /> </div>
+                  <div> <GrRotateRight /> </div>
+                  <div> <CgMergeVertical /> </div>
+                  <div> <CgMergeHorizontal /> </div>
                 </div>
               </div>
             </div>

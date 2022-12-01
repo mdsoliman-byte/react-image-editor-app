@@ -35,11 +35,60 @@
           border: 1px solid #c3c5c4;
           margin-right: 8px;
           height: 300px;
+          padding: 10px;
           .filter__key {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 8px;
-            align-items: center;
+            button.active {
+              background-color: rgb(84, 93, 216);
+              color: #fff;
+            }
+            button {
+              padding: 8px;
+              border-radius: 3px;
+              border: 1px solid #dad7d7;
+              cursor: pointer;
+              text-transform: capitalize;
+            }
+          }
+          .filter__slider {
+            margin: 15px 0px;
+            .label__bar {
+              margin-bottom: 4px;
+              display: flex;
+              justify-content: space-between;
+              label,
+              span {
+                color: #404040;
+                font-size: 15px;
+                text-transform: capitalize;
+              }
+            }
+            input {
+              width: 100%;
+            }
+          }
+          .rotate {
+            label {
+              margin-bottom: 8px;
+              display: block;
+              font-size: 15px;
+              color: #404040;
+            }
+            .icon {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              grid-gap: 5px;
+              div {
+                border: 1px solid rgb(197, 194, 194);
+                padding: 8px 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+              }
+            }
           }
         }
       }
