@@ -26,6 +26,15 @@ const Main = () => {
   ];
   const [state, setState] = useState({
     image: "",
+    Brightness: 200,
+    Grayscale: 0,
+    Sepia: 0,
+    Saturate: 100,
+    Contrast: 100,
+    HueRotate: 0,
+    rotate: 0,
+    varTical: 1,
+    horiZental: 1,
   });
   const imagehandel = (e) => {
     if (e.target.files.length !== 0) {
@@ -94,7 +103,14 @@ const Main = () => {
           <div className="image__section">
             <div className="image">
               {state.image ? (
-                <img src={state.image} alt="" />
+                <img
+                  style={{
+                    filter: `brightness(${state.Brightness}%) grayscale(${state.Grayscale}%) sepia(${state.Sepia}%) saturate(${state.Saturate}%) contrast(${state.Contrast}%) hue-rotate(${state.HueRotate}deg)`,
+                    transform: `rotate(${state.rotate} deg) scale(${state.varTical}, scale(${state.horiZental}))`,
+                  }}
+                  src={state.image}
+                  alt=""
+                />
               ) : (
                 <label htmlFor="choose">
                   <IoIosImage />
