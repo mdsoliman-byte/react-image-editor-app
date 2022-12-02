@@ -3,27 +3,9 @@ import "./style/main.scss";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
 import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
+import filterElement from "./style/filterElement";
 const Main = () => {
-  const filterElement = [
-    {
-      name: "Brightness",
-    },
-    {
-      name: "Grayscale",
-    },
-    {
-      name: "Sepia",
-    },
-    {
-      name: "Saturate",
-    },
-    {
-      name: "Contrast",
-    },
-    {
-      name: "HueRotate",
-    },
-  ];
+  const [maxValue, setMaxValue] = useState({});
   const [state, setState] = useState({
     image: "",
     Brightness: 200,
@@ -48,6 +30,12 @@ const Main = () => {
       fileReder.readAsDataURL(e.target.files[0]);
     }
   };
+  const inputHandel = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
   console.log(state);
   return (
     <div className="image__editor">
@@ -62,16 +50,29 @@ const Main = () => {
                 <span>Filters</span>
                 <div className="filter__key">
                   {filterElement.map((element, index) => (
-                    <button key={index}>{element.name}</button>
+                    <button
+                      onClick={() => setMaxValue(element)}
+                      key={index}
+                      className={maxValue.name === element.name ? "active" : ""}
+                    >
+                      {element.name}
+                    </button>
                   ))}
                 </div>
               </div>
               <div className="filter__slider">
                 <div className="label__bar">
                   <label htmlFor="range">Rotate</label>
-                  <span>100%</span>
+                  <span>{maxValue.maxValue}%</span>
                 </div>
-                <input type="range" name="" id="" />
+                <input
+                  type="range"
+                  value={state[maxValue.name]}
+                  max={maxValue.maxValue}
+                  onChange={inputHandel}
+                  name={maxValue.name}
+                  id=""
+                />
               </div>
               <div className="rotate">
                 <label htmlFor="">Rotate & Flip</label>
