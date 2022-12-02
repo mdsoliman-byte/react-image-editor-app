@@ -36,7 +36,18 @@ const Main = () => {
       [e.target.name]: e.target.value,
     });
   };
-  console.log(state);
+  const leftRoted = () => {
+    setState({
+      ...state,
+      rotate: state.rotate - 90,
+    });
+  };
+  const rightRoted = () => {
+    setState({
+      ...state,
+      rotate: state.rotate + 90,
+    });
+  };
   return (
     <div className="image__editor">
       <div className="card">
@@ -77,11 +88,11 @@ const Main = () => {
               <div className="rotate">
                 <label htmlFor="">Rotate & Flip</label>
                 <div className="icon">
-                  <div>
+                  <div onClick={leftRoted}>
                     {" "}
                     <GrRotateLeft />{" "}
                   </div>
-                  <div>
+                  <div onClick={rightRoted}>
                     {" "}
                     <GrRotateRight />{" "}
                   </div>
@@ -107,7 +118,7 @@ const Main = () => {
                 <img
                   style={{
                     filter: `brightness(${state.Brightness}%) grayscale(${state.Grayscale}%) sepia(${state.Sepia}%) saturate(${state.Saturate}%) contrast(${state.Contrast}%) hue-rotate(${state.HueRotate}deg)`,
-                    transform: `rotate(${state.rotate} deg) scale(${state.varTical}, scale(${state.horiZental}))`,
+                    transform: `rotate(${state.rotate}deg) scale(${state.varTical}, ${state.horiZental})`,
                   }}
                   src={state.image}
                   alt=""
