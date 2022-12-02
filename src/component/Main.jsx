@@ -48,6 +48,19 @@ const Main = () => {
       rotate: state.rotate + 90,
     });
   };
+  const varTicalFlip = () => {
+    setState({
+      ...state,
+      varTical: state.varTical === 1 ? -1 : 1,
+    });
+  };
+  const horiZentalFlip = () => {
+    setState({
+      ...state,
+      horiZental: state.horiZental === 1 ? -1 : 1,
+    });
+  };
+  console.log(state.horiZental);
   return (
     <div className="image__editor">
       <div className="card">
@@ -96,11 +109,11 @@ const Main = () => {
                     {" "}
                     <GrRotateRight />{" "}
                   </div>
-                  <div>
+                  <div onClick={varTicalFlip}>
                     {" "}
                     <CgMergeVertical />{" "}
                   </div>
-                  <div>
+                  <div onClick={horiZentalFlip}>
                     {" "}
                     <CgMergeHorizontal />{" "}
                   </div>
